@@ -2,9 +2,7 @@ import React from 'react';
 import BottomTabNavigator from './src/navigation/Navigation';
 
 const App = () => {
-  return (
-      <BottomTabNavigator />
-  );
+  return <BottomTabNavigator />;
 };
 
 export default App;

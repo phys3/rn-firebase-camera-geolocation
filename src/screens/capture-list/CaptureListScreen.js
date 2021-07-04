@@ -9,23 +9,23 @@ const Container = styled.SafeAreaView`
 `;
 
 const CaptureListScreen = () => {
-  const [captures, setCaptures] = useState([])
+  const [captures, setCaptures] = useState([]);
   useEffect(() => {
     const subscriber = firestore()
       .collection('captures')
       .onSnapshot(querySnapshot => {
         const captures = [];
-  
+
         querySnapshot.forEach(documentSnapshot => {
           captures.push({
             ...documentSnapshot.data(),
             key: documentSnapshot.id,
           });
         });
-  
+
         setCaptures(captures);
       });
-  
+
     return () => subscriber();
   }, []);
   const sortedData = captures
@@ -50,4 +50,4 @@ const CaptureListScreen = () => {
   );
 };
 
-export default CaptureListScreen
+export default CaptureListScreen;

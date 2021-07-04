@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from 'react-native';
 import styled from 'styled-components/native';
-import _ from  'lodash';
-import createFormData from './helpers/createFormData'
+import _ from 'lodash';
+import createFormData from './helpers/createFormData';
 
 const Container = styled.View`
   flex-direction: row;
@@ -22,9 +22,12 @@ const Tumbnail = styled.Image`
 
 const API_KEY = '3d846cf2c81f43438f09beced4a909b6';
 
-
 const CaptureListItem = ({capture}) => {
-  const { coordinates: { latitude, longitude }, image_uri, created_at} = capture;
+  const {
+    coordinates: {latitude, longitude},
+    image_uri,
+    created_at,
+  } = capture;
   const [temperature, setTemperature] = useState('');
 
   const handleUploadPhoto = () => {
@@ -57,8 +60,10 @@ const CaptureListItem = ({capture}) => {
     )
       .then(response => response.json())
       .then(json => {
-        console.log(json)
-        setTemperature(_.get(json, 'data[0].temp', 'Temperature unavailable').toString())
+        console.log(json);
+        setTemperature(
+          _.get(json, 'data[0].temp', 'Temperature unavailable').toString(),
+        );
       })
       .catch(error => console.error(error));
   }, [latitude, longitude]);

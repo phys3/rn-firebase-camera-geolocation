@@ -20,7 +20,7 @@ const CameraScreen = ({navigation, route, addCapture}) => {
     const options = {quality: 0.5, base64: true};
     const data = await camera.current.takePictureAsync(options);
     const image_uri = await saveImage(data.uri);
-    
+
     firestore()
       .collection('captures')
       .add({
@@ -34,8 +34,9 @@ const CameraScreen = ({navigation, route, addCapture}) => {
       })
       .then(() => {
         console.log('Capture added!');
-      }).catch(error => {
-        console.log(error)
+      })
+      .catch(error => {
+        console.log(error);
       });
 
     navigation.goBack();
