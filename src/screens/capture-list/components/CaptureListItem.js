@@ -60,7 +60,6 @@ const CaptureListItem = ({capture}) => {
     )
       .then(response => response.json())
       .then(json => {
-        console.log(json);
         setTemperature(
           _.get(json, 'data[0].temp', 'Temperature unavailable').toString(),
         );
